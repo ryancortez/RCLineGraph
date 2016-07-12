@@ -16,6 +16,9 @@ class RCLineGraph: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderWidth = 2.0
     }
     
     required init?(coder aDecoder: NSCoder) {
