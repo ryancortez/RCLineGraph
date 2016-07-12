@@ -40,15 +40,18 @@ class RCLineGraph: UIView {
         UIColor.yellowColor().setStroke()
         line.moveToPoint(CGPointMake(lineStartingX, lineStartingY))
         line.stroke()
+        
+        for (index, y) in yValues.enumerate() {
+            if (index != 0) {
+                extendGraphLine(withLine: line, andPoint:CGPointMake(lineStartingX + (distanceBetweenEachPoint * CGFloat(index)), self.frame.height - margin - y + (circleDiameter / 2) ))
+            }
+        }
 
         for (index, y) in yValues.enumerate() {
             let circleX = margin + (CGFloat(index) * distanceBetweenEachPoint) - (circleDiameter/2)
             let circleY = self.frame.height - margin - y
             let circlePoint = CGPointMake(circleX, circleY)
             
-            if (index != 0) {
-                extendGraphLine(withLine: line, andPoint:CGPointMake(lineStartingX + (distanceBetweenEachPoint * CGFloat(index)), self.frame.height - margin - y + (circleDiameter / 2) ))
-            }
             drawGraphPoint(atPoint: circlePoint, withCircleDiameter: circleDiameter)
         }
     }
