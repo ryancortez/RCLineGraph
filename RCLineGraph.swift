@@ -13,11 +13,14 @@ import UIKit
 class RCLineGraph: UIView {
     
     var yValues: Array<CGFloat> = [100, 20, 60, 20, 50]
+    var borderColor = UIColor.lightGrayColor().CGColor
+    var circleColor = UIColor.orangeColor()
+    var lineColor = UIColor.orangeColor()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderColor = borderColor
         self.layer.borderWidth = 2.0
     }
     
@@ -40,7 +43,7 @@ class RCLineGraph: UIView {
         let lineStartingY = self.frame.height - margin - yValues.first! + (circleDiameter / 2)
         let lineStartingX = margin
         let line = UIBezierPath()
-        UIColor.orangeColor().setStroke()
+        lineColor.setStroke()
         line.lineWidth = self.frame.width / 150
         line.moveToPoint(CGPointMake(lineStartingX, lineStartingY))
         line.stroke()
@@ -62,7 +65,7 @@ class RCLineGraph: UIView {
     
     func drawGraphPoint(atPoint point: CGPoint, withCircleDiameter circleDiameter: CGFloat) {
         let circle = UIBezierPath(ovalInRect: CGRect(x: point.x, y: point.y, width: circleDiameter, height: circleDiameter))
-        UIColor.orangeColor().setFill()
+        circleColor.setFill()
         circle.fill()
         circle.closePath()
     }
