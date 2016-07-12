@@ -24,7 +24,7 @@ class RCLineGraph: UIView {
     
     override func drawRect(rect: CGRect) {
         // Create margin so the chart looks nicer
-        let circleDiameter: CGFloat = frame.width / 50
+        let circleDiameter: CGFloat = frame.width / 30
         let margin:CGFloat = frame.width / 20
         
         // Get the width of the graph without the margins on the sides
@@ -37,7 +37,8 @@ class RCLineGraph: UIView {
         let lineStartingY = self.frame.height - margin - yValues.first! + (circleDiameter / 2)
         let lineStartingX = margin
         let line = UIBezierPath()
-        UIColor.yellowColor().setStroke()
+        UIColor.orangeColor().setStroke()
+        line.lineWidth = self.frame.width / 150
         line.moveToPoint(CGPointMake(lineStartingX, lineStartingY))
         line.stroke()
         
@@ -58,7 +59,7 @@ class RCLineGraph: UIView {
     
     func drawGraphPoint(atPoint point: CGPoint, withCircleDiameter circleDiameter: CGFloat) {
         let circle = UIBezierPath(ovalInRect: CGRect(x: point.x, y: point.y, width: circleDiameter, height: circleDiameter))
-        UIColor.redColor().setFill()
+        UIColor.orangeColor().setFill()
         circle.fill()
         circle.closePath()
     }
